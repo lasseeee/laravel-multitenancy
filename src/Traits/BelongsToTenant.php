@@ -3,6 +3,7 @@
 namespace Lasseeee\Multitenant\Traits;
 
 use Lasseeee\Multitenant\Scopes\TenantScope;
+use Lasseeee\Multitenant\Services\TenantService;
 
 trait BelongsToTenant
 {
@@ -13,6 +14,14 @@ trait BelongsToTenant
      */
     public static function bootBelongsToTenant() {
         static::addGlobalScope(new TenantScope);
+
+        static::creating(function ($model) {
+            if (!$model->tenant_id) {
+                $model->tenant()->associate(app(TenantService::class)->getTenant());
+            }
+
+            return $model;
+        });
     }
 
     /**
