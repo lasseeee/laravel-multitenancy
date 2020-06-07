@@ -1,0 +1,20 @@
+{
+    "name": "lasseeee/multitenant",
+    "description": "Add support for multiple tenants",
+    "type": "library",
+    "require": {},
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lasseeee\\Multitenant\\TenantServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Lasseeee\\Multitenant\\": "src"
+        }
+    }
+}
