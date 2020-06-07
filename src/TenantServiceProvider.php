@@ -3,11 +3,12 @@
 namespace Lasseeee\Multitenant;
 
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Lasseeee\Multitenant\Middleware\Multitenant;
-use Lasseeee\Multitenant\Services\TenantService;
 use Lasseeee\Multitenant\Http\Middleware\IdentifyTenant;
 use Lasseeee\Multitenant\Http\Middleware\ValidateTenant;
+use Lasseeee\Multitenant\Middleware\Multitenant;
+use Lasseeee\Multitenant\Services\TenantService;
 
 class TenantServiceProvider extends ServiceProvider
 {
@@ -48,5 +49,7 @@ class TenantServiceProvider extends ServiceProvider
         $router->aliasMiddleware('tenant.identify', IdentifyTenant::class);
 
         $router->aliasMiddleware('tenant.validate', ValidateTenant::class);
+
+        Route::model('tenant', config('multitenant.tenant_model'));
     }
 }
