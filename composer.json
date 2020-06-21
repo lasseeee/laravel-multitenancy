@@ -1,6 +1,6 @@
 {
     "name": "lasseeee/multitenant",
-    "description": "Add support for multiple tenants",
+    "description": "Add support for multiple tenants in Laravel projects",
     "type": "library",
     "require": {},
     "minimum-stability": "dev",
