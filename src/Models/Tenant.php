@@ -13,6 +13,6 @@ class Tenant extends Model
      */
     public function getRouteKeyName()
     {
-        return 'subdomain';
+        return 'slug';
     }
 }
