@@ -1,6 +1,6 @@
 <?php
 
-namespace Lasseeee\Multitenancy\TenantFinder;
+namespace Lasseeee\Multitenancy;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
