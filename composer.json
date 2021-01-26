@@ -1,20 +1,31 @@
 {
-    "name": "lasseeee/laravel-multitenant",
-    "description": "Add support for multiple tenants in Laravel projects",
-    "type": "library",
-    "require": {},
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Lasseeee\\Multitenant\\TenantServiceProvider"
-            ]
-        }
+    "name": "lasseeee/laravel-multitenancy",
+    "description": "Make your Laravel app usable by multiple tenants",
+    "keywords": [
+        "lasseeee",
+        "laravel-multitenancy"
+    ],
+    "homepage": "https://github.com/lasseeee/laravel-multitenancy",
+    "license": "MIT",
+    "require": {
+        "php": "^8.0|^7.4",
+        "illuminate/support": "^7.0|^8.0"
     },
     "autoload": {
         "psr-4": {
-            "Lasseeee\\Multitenant\\": "src"
+            "Lasseeee\\Multitenancy\\": "src"
         }
-    }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lasseeee\\Multitenancy\\MultitenancyServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

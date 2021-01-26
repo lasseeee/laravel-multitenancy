@@ -1,9 +1,9 @@
 <?php
 
-namespace Lasseeee\Multitenant\Traits;
+namespace Lasseeee\Multitenancy\Concerns;
 
-use Lasseeee\Multitenant\Scopes\TenantScope;
-use Lasseeee\Multitenant\Services\TenantService;
+use Lasseeee\Multitenancy\Models\Tenant;
+use Lasseeee\Multitenancy\Scopes\TenantScope;
 
 trait BelongsToTenant
 {
@@ -12,12 +12,13 @@ trait BelongsToTenant
      *
      * @return void
      */
-    public static function bootBelongsToTenant() {
+    public static function bootBelongsToTenant()
+    {
         static::addGlobalScope(new TenantScope);
 
         static::creating(function ($model) {
             if (!$model->tenant_id) {
-                $model->tenant()->associate(app(TenantService::class)->getTenant());
+                $model->tenant()->associate(Tenant::current());
             }
 
             return $model;
@@ -31,6 +32,6 @@ trait BelongsToTenant
      */
     public function tenant()
     {
-        return $this->belongsTo(config('multitenant.tenant_model'));
+        return $this->belongsTo(Tenant::class);
     }
 }

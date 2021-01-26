@@ -1,11 +1,11 @@
 <?php
 
-namespace Lasseeee\Multitenant\Scopes;
+namespace Lasseeee\Multitenancy\Scopes;
 
+use Lasseeee\Multitenancy\Models\Tenant;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
-use Illuminate\Database\Eloquent\Builder;
-use Lasseeee\Multitenant\Services\TenantService;
 
 class TenantScope implements Scope
 {
@@ -18,10 +18,8 @@ class TenantScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $tenant = app(TenantService::class)->getTenant();
-
-        if ($tenant) {
-            $builder->where($model->getTable() . '.tenant_id', '=', $tenant->id);
+        if (Tenant::isSet()) {
+            $builder->where($model->getTable() . '.tenant_id', '=', Tenant::current()->id);
         }
     }
 
