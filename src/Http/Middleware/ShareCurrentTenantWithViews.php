@@ -20,6 +20,8 @@ class ShareCurrentTenantWithViews
     {
         View::share('currentTenant', Tenant::current());
 
+        View::share('currentUserTenants', Tenant::forCurrentUser());
+
         return $next($request);
     }
 }

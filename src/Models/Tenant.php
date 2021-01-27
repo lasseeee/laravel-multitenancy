@@ -2,6 +2,7 @@
 
 namespace Lasseeee\Multitenancy\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class Tenant extends Model
@@ -64,6 +65,22 @@ class Tenant extends Model
         }
 
         return app('currentTenant');
+    }
+
+    /**
+     * Return the tenants for the current user.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public static function forCurrentUser(): Collection
+    {
+        $cacheKey = 'tenants_for_user_id_' . auth()->id();
+
+        return cache()->rememberForever($cacheKey, function () {
+            return auth()->user()->tenants;
+        });
+
+        return collection();
     }
 
     /**

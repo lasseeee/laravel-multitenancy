@@ -2,10 +2,11 @@
 
 namespace Lasseeee\Multitenancy;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Lasseeee\Multitenancy\Http\Middleware\EnsureUserBelongsToTenant;
+use Lasseeee\Multitenancy\Http\Middleware\ShareCurrentTenantWithViews;
 use Lasseeee\Multitenancy\TenantFinder;
 
 class MultitenancyServiceProvider extends ServiceProvider
