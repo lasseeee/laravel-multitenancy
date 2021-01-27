@@ -12,6 +12,6 @@ class TenantFinder
     {
         $subdomain = Str::before($request->getHost(), '.');
 
-        return Tenant::whereSubdomain($subdomain)->first();
+        return config('multitenancy.tenant_model')::whereSubdomain($subdomain)->first();
     }
 }

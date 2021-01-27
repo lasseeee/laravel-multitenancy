@@ -32,6 +32,6 @@ trait BelongsToTenant
      */
     public function tenant()
     {
-        return $this->belongsTo(Tenant::class);
+        return $this->belongsTo(config('multitenancy.tenant_model'));
     }
 }
