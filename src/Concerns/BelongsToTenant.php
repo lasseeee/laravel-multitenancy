@@ -2,13 +2,13 @@
 
 namespace Lasseeee\Multitenancy\Concerns;
 
-use Lasseeee\Multitenancy\Concerns\UsesTenantModel;
+use Lasseeee\Multitenancy\Concerns\UsesTenantModels;
 use Lasseeee\Multitenancy\Models\Tenant;
 use Lasseeee\Multitenancy\Scopes\TenantScope;
 
 trait BelongsToTenant
 {
-    use UsesTenantModel;
+    use UsesTenantModels;
 
     /**
      * Make this trait bootable from the model.

@@ -74,7 +74,11 @@ class Tenant extends Model
      */
     public static function forCurrentUser(): Collection
     {
-        $cacheKey = 'tenants_for_user_id_' . auth()->id();
+        if (! config('multitenancy.cache_current_user_tenants')) {
+            return auth()->user()->tenants;
+        }
+
+        $cacheKey = 'tenant_user_' . auth()->id();
 
         return cache()->rememberForever($cacheKey, function () {
             return auth()->user()->tenants;
