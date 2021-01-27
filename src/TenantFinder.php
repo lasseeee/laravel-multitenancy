@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Lasseeee\Multitenancy\Models\Tenant;
 
-class TenantFinder extends TenantFinder
+class TenantFinder
 {
-    public function findForRequest(Request $request): ?Tenant
+    public static function findForRequest(Request $request): ?Tenant
     {
         $subdomain = Str::before($request->getHost(), '.');
 
