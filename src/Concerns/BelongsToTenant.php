@@ -2,11 +2,14 @@
 
 namespace Lasseeee\Multitenancy\Concerns;
 
+use Lasseeee\Multitenancy\Concerns\UsesTenantModel;
 use Lasseeee\Multitenancy\Models\Tenant;
 use Lasseeee\Multitenancy\Scopes\TenantScope;
 
 trait BelongsToTenant
 {
+    use UsesTenantModel;
+
     /**
      * Make this trait bootable from the model.
      *
@@ -32,6 +35,6 @@ trait BelongsToTenant
      */
     public function tenant()
     {
-        return $this->belongsTo(config('multitenancy.tenant_model'));
+        return $this->belongsTo($this->getTenantModel());
     }
 }

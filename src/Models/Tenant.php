@@ -79,8 +79,6 @@ class Tenant extends Model
         return cache()->rememberForever($cacheKey, function () {
             return auth()->user()->tenants;
         });
-
-        return collection();
     }
 
     /**

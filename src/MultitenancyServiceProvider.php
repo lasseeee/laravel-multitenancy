@@ -6,7 +6,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Lasseeee\Multitenancy\Http\Middleware\EnsureUserBelongsToTenant;
-use Lasseeee\Multitenancy\Http\Middleware\ShareCurrentTenantWithViews;
+use Lasseeee\Multitenancy\Http\Middleware\ShareTenantDataWithViews;
 use Lasseeee\Multitenancy\TenantFinder;
 
 class MultitenancyServiceProvider extends ServiceProvider
@@ -47,7 +47,7 @@ class MultitenancyServiceProvider extends ServiceProvider
     {
         $router = $this->app->make(Router::class);
         $router->pushMiddlewareToGroup('tenant', EnsureUserBelongsToTenant::class);
-        $router->pushMiddlewareToGroup('tenant', ShareCurrentTenantWithViews::class);
+        $router->pushMiddlewareToGroup('tenant', ShareTenantDataWithViews::class);
 
         return $this;
     }
@@ -55,9 +55,11 @@ class MultitenancyServiceProvider extends ServiceProvider
     protected function determineCurrentTenant(): void
     {
         if (! $this->app->runningInConsole()) {
-            $tenant = TenantFinder::findForRequest(request());
+            $tenantFinder = app(TenantFinder::class);
 
-            optional($tenant)->makeCurrent();
+            $tenant = $tenantFinder->findOrFailForRequest(request());
+
+            $tenant->makeCurrent();
         }
     }
 }

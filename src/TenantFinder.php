@@ -4,14 +4,19 @@ namespace Lasseeee\Multitenancy;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Lasseeee\Multitenancy\Concerns\UsesTenantModel;
 use Lasseeee\Multitenancy\Models\Tenant;
 
 class TenantFinder
 {
-    public static function findForRequest(Request $request): ?Tenant
+    use UsesTenantModel;
+
+    public function findOrFailForRequest(Request $request): ?Tenant
     {
         $subdomain = Str::before($request->getHost(), '.');
 
-        return config('multitenancy.tenant_model')::whereSubdomain($subdomain)->first();
+        return $this->getTenantModel()
+        ::whereSubdomain($subdomain)
+        ->firstOrFail();
     }
 }
