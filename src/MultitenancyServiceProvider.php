@@ -57,9 +57,9 @@ class MultitenancyServiceProvider extends ServiceProvider
         if (! $this->app->runningInConsole()) {
             $tenantFinder = app(TenantFinder::class);
 
-            $tenant = $tenantFinder->findOrFailForRequest(request());
+            $tenant = $tenantFinder->findForRequest(request());
 
-            $tenant->makeCurrent();
+            optional($tenant)->makeCurrent();
         }
     }
 }

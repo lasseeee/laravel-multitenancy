@@ -11,12 +11,12 @@ class TenantFinder
 {
     use UsesTenantModel;
 
-    public function findOrFailForRequest(Request $request): ?Tenant
+    public function findForRequest(Request $request): ?Tenant
     {
         $subdomain = Str::before($request->getHost(), '.');
 
         return $this->getTenantModel()
         ::whereSubdomain($subdomain)
-        ->firstOrFail();
+        ->first();
     }
 }
