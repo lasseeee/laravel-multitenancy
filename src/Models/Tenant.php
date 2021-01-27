@@ -29,7 +29,7 @@ class Tenant extends Model
 
         static::forgetCurrent();
 
-        app()->instance('currentTenant', $tenant);
+        app()->instance('currentTenant', $this);
 
         return $this;
     }
