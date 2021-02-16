@@ -21,5 +21,5 @@ return [
     /*
      * Whether the current user’s tenants should be cached.
      */
-    'cache_current_user_tenants' => true,
+    'cache_current_user_tenants' => false,
 ];
