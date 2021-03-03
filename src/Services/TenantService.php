@@ -10,14 +10,14 @@ class TenantService
     */
     private $tenant;
 
-    public function setTenant(?Tenant $tenant)
+    public function setTenant($tenant)
     {
         $this->tenant = $tenant;
 
         return $this;
     }
 
-    public function getTenant() : ?Tenant
+    public function getTenant()
     {
         return $this->tenant;
     }
