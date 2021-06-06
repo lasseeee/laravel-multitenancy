@@ -72,16 +72,16 @@ class Tenant extends Model
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public static function forCurrentUser(): Collection
+    public static function forCurrentUser()
     {
         if (! config('multitenancy.cache_current_user_tenants')) {
-            return auth()->user()->tenants;
+            return auth()->user()->tenants ?? collect([auth()->user()->tenant]);
         }
 
         $cacheKey = 'tenant_user_' . auth()->id();
 
         return cache()->rememberForever($cacheKey, function () {
-            return auth()->user()->tenants;
+            return auth()->user()->tenants ?? collect([auth()->user()->tenant]);
         });
     }
 
