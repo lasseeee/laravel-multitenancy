@@ -17,8 +17,6 @@ class Tenant extends Model
 
     /**
      * Make this tenant the current one.
-     *
-     * @return \Lasseeee\Multitenancy\Models\Tenant
      */
     public function makeCurrent(): self
     {
@@ -35,8 +33,6 @@ class Tenant extends Model
 
     /**
      * Forget the current tenant.
-     *
-     * @return \Lasseeee\Multitenancy\Models\Tenant
      */
     public static function forgetCurrent(): ?self
     {
@@ -53,8 +49,6 @@ class Tenant extends Model
 
     /**
      * Return the current tenant.
-     *
-     * @return \Lasseeee\Multitenancy\Models\Tenant
      */
     public static function current(): ?self
     {
@@ -67,8 +61,6 @@ class Tenant extends Model
 
     /**
      * Return the tenants for the current user.
-     *
-     * @return \Illuminate\Database\Eloquent\Collection
      */
     public static function forCurrentUser()
     {
@@ -85,8 +77,6 @@ class Tenant extends Model
 
     /**
      * Check is a current tenant is set.
-     *
-     * @return boolean
      */
     public static function isSet(): bool
     {
@@ -95,8 +85,6 @@ class Tenant extends Model
 
     /**
      * Check if this current is the current one.
-     *
-     * @return boolean
      */
     public function isCurrent(): bool
     {

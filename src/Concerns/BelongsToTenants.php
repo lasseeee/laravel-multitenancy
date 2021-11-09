@@ -11,8 +11,6 @@ trait BelongsToTenants
 
     /**
      * The tenants this user has access to.
-     *
-     * @return \Illuminate\Support\Collection
      */
     public function tenants()
     {

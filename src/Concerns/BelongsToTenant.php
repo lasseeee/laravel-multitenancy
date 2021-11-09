@@ -12,8 +12,6 @@ trait BelongsToTenant
 
     /**
      * Make this trait bootable from the model.
-     *
-     * @return void
      */
     public static function bootBelongsToTenant()
     {
