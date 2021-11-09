@@ -22,4 +22,9 @@ return [
      * Whether the current user’s tenants should be cached.
      */
     'cache_current_user_tenants' => false,
+
+    /*
+     * The identifying database column name
+     */
+    'identifier_column_name' => 'subdomain',
 ];
