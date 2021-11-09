@@ -68,7 +68,7 @@ class Tenant extends Model
             return auth()->user()->tenants ?? collect([auth()->user()->tenant]);
         }
 
-        $cacheKey = 'tenant_user_' . auth()->id();
+        $cacheKey = 'user_' . auth()->id() . '_tenants';
 
         return cache()->rememberForever($cacheKey, function () {
             return auth()->user()->tenants ?? collect([auth()->user()->tenant]);
