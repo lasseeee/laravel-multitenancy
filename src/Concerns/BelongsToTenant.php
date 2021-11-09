@@ -13,12 +13,12 @@ trait BelongsToTenant
     /**
      * Make this trait bootable from the model.
      */
-    public static function bootBelongsToTenant()
+    public static function bootBelongsToTenant(): void
     {
         static::addGlobalScope(new TenantScope);
 
         static::creating(function ($model) {
-            if (!$model->tenant_id) {
+            if (! $model->tenant_id) {
                 $model->tenant()->associate(Tenant::current());
             }
 
