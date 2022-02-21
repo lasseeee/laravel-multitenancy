@@ -3,6 +3,7 @@
 namespace Lasseeee\Multitenancy\Concerns;
 
 use Lasseeee\Multitenancy\Concerns\UsesTenantModels;
+use Lasseeee\Multitenancy\Models\Tenant;
 use Lasseeee\Multitenancy\Models\TenantUser;
 use Lasseeee\Multitenancy\Scopes\TenantsScope;
 
