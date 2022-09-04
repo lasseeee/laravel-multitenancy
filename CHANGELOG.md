@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 5.0.0 - 2022-09-04
+
+### Added
+- Laravel 9 support
+
+### Removed
+- Support for older Laravel versions
+
 ## 4.1.0 - 2022-02-21
 
 ### Added
