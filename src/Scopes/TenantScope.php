@@ -12,14 +12,17 @@ class TenantScope implements Scope
     /**
      * Apply the scope to a given Eloquent query builder.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $builder
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param \Illuminate\Database\Eloquent\Builder $builder
+     * @param \Illuminate\Database\Eloquent\Model $model
      * @return void
      */
-    public function apply(Builder $builder, Model $model)
+    public function apply(Builder $builder, Model $model): void
     {
         if (Tenant::isSet()) {
-            $builder->where($model->getTable() . '.tenant_id', '=', Tenant::current()->id);
+            $builder->where(function (Builder $builder) use ($model) {
+                $builder->where($model->getTable() . '.tenant_id', '=', Tenant::current()->id)
+                    ->orWhereNull($model->getTable() . '.tenant_id');
+            });
         }
     }
 
