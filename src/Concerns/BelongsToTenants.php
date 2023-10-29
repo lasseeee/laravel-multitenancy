@@ -17,14 +17,6 @@ trait BelongsToTenants
     public static function bootBelongsToTenants(): void
     {
         static::addGlobalScope(new TenantsScope);
-
-        static::creating(function ($model) {
-            if (! $model->tenants()->exists()) {
-                $model->tenants()->attach(Tenant::current());
-            }
-
-            return $model;
-        });
     }
 
     /**
