@@ -18,7 +18,7 @@ class EnsureUserBelongsToTenant
     public function handle(Request $request, Closure $next)
     {
         if (! Tenant::forCurrentUser()->contains(Tenant::current())) {
-            return abort(401);
+            return abort(403);
         }
 
         return $next($request);
