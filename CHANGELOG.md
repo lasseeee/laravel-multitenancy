@@ -1,6 +1,28 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 7.0.0 - 2023-10-29
+
+### Removed
+- Extranous check in middleware which checked if tenants existed for the current user.
+- `creating` global events which automatically added the `tenants`or `tenant` relation if not set, due to it breaking tests, being obscure and never being used. Created more confusion and complexity than help.
+- Extranous doc blocks
+
+### Fixed
+- Wrong snamespace for service classes (not being used?)
+
+
+### Changed
+- Aborts to `403` instead of `401` if user has no access to the tenant, or no tenants.
+
+## 6.0.0 - 2023-12-13
+
+### Changed
+- Include rows with `tenant_id` set to `null` when querying for any tenant 
+
+### Added
+- Laravel 9 support
+
 ## 5.0.0 - 2022-09-04
 
 ### Added
