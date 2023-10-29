@@ -1,7 +1,7 @@
 <?php
-namespace Lasseeee\Multitenant\Services;
+namespace Lasseeee\Multitenancy\Services;
 
-use Lasseeee\Multitenant\Models\Tenant;
+use Lasseeee\Multitenancy\Models\Tenant;
 
 class TenantService
 {
