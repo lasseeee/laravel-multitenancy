@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 8.0.0 - 2024-04-10
+
+### Added
+- Support for Laravel 10
+
+### Removed
+- Support for older Laravel versions
+
 ## 7.0.0 - 2023-10-29
 
 ### Removed
