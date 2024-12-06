@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 9.0.0 - 2024-12-06
+### Added
+- Laravel 11 support
+
 ## 8.0.0 - 2024-04-10
 
 ### Added
